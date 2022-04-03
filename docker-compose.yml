@@ -1,0 +1,11 @@
+version: '3'
+services:
+  python3_jd:
+    build: ./deploy
+    container_name: python3_jd
+    volumes:
+      - /var/www/python_project/jd_coupon_spiders:/app
+    environment:
+      - TZ=Asia/Shanghai
+
+
