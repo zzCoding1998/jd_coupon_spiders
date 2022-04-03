@@ -43,9 +43,9 @@ class JdcouponspiderSpider(scrapy.Spider):
                 './div[contains(@class, "q-type")]//div[contains(@class, "q-price")]/span[@data-tips]/text()').get()
             jd_coupon['limit_amount'] = float(re.findall(r'([0-9]*\.?[0-9]+)', jd_coupon['limit_str'])[0])
             if jd_coupon['discount_unit'] == 2:
-                jd_coupon['need_pay_amount'] = round(jd_coupon['limit_amount'] * jd_coupon['denomination'] / 10, 2)
+                jd_coupon['need_pay_amount'] = round(jd_coupon['limit_amount'] * jd_coupon['denomination'] / 10, 4)
                 jd_coupon['discount_rate'] = jd_coupon['denomination']
             else:
                 jd_coupon['need_pay_amount'] = jd_coupon['limit_amount'] - jd_coupon['denomination']
-                jd_coupon['discount_rate'] = round(jd_coupon['need_pay_amount'] / jd_coupon['limit_amount'], 2)
+                jd_coupon['discount_rate'] = round(jd_coupon['need_pay_amount'] / jd_coupon['limit_amount'], 4)
             yield jd_coupon
