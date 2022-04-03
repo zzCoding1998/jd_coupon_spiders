@@ -41,7 +41,7 @@ class JdCouponSpidersPipeline:
         try:
             cursor = self.db.cursor()
             today = datetime.date.today()
-            cursor.execute(f"delete from jd_coupons where crawl_date = {today}")
+            cursor.execute(f"delete from jd_coupons where crawl_date = '{today}'")
             self.db.commit()
         except Exception as e:
             self.db.rollback()
