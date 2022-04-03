@@ -47,5 +47,5 @@ class JdcouponspiderSpider(scrapy.Spider):
                 jd_coupon['discount_rate'] = jd_coupon['denomination']
             else:
                 jd_coupon['need_pay_amount'] = jd_coupon['limit_amount'] - jd_coupon['denomination']
-                jd_coupon['discount_rate'] = round((jd_coupon['limit_amount'] - jd_coupon['denomination']) / jd_coupon['limit_amount'])
+                jd_coupon['discount_rate'] = round(jd_coupon['need_pay_amount'] / jd_coupon['limit_amount'], 2)
             yield jd_coupon
