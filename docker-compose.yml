@@ -8,5 +8,6 @@ services:
       - /var/www/envs/jd_coupon_spiders/settings.py:/app/jd_coupon_spiders/settings.py
     environment:
       - TZ=Asia/Shanghai
+    restart: unless-stopped
 
 
