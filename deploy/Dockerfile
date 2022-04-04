@@ -23,7 +23,7 @@ RUN pip install  pymysql
 
 WORKDIR /app
 
-COPY . .
+COPY ../ .
 
 EXPOSE 8010:8010
 
