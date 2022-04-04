@@ -21,7 +21,7 @@ RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.d
 
 RUN pip install  pymysql
 
-COPY /var/www/python_project/jd_coupon_spiders /app
+COPY /var/www/python_project/jd_coupon_spiders/* /app/
 COPY /var/www/envs/jd_coupon_spiders/settings.py /app/jd_coupon_spiders/settings.py
 
 WORKDIR /app
