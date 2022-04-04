@@ -4,6 +4,7 @@ services:
     build: ./deploy
     container_name: python3_jd
     volumes:
+      - /var/www/envs/jd_coupon_spiders/settings.py:/app/jd_coupon_spiders/settings.py
       - /var/log/jd_coupon_spiders:/app/log
     environment:
       - TZ=Asia/Shanghai

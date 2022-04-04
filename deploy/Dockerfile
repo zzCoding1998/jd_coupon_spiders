@@ -24,7 +24,6 @@ RUN pip install  pymysql
 WORKDIR /app
 
 COPY . .
-COPY /var/www/envs/jd_coupon_spiders/settings.py /app/jd_coupon_spiders/settings.py
 
 EXPOSE 8010:8010
 
