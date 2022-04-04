@@ -1,7 +1,7 @@
 version: '3'
 services:
   python3_jd:
-    build: ./deploy
+    build: .
     container_name: python3_jd
     volumes:
       - /var/www/envs/jd_coupon_spiders/settings.py:/app/jd_coupon_spiders/settings.py
