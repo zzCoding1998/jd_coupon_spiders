@@ -30,8 +30,6 @@ class JdcouponspiderSpider(scrapy.Spider):
             jd_coupon = jdCoupon()
             jd_coupon['crawl_date'] = datetime.date.today()
             jd_coupon['cat_id'] = response.request.meta['cat_id']
-            self.logger.info("cat_id ======================" + str(response.request.meta['cat_id']))
-            self.logger.info("url ======================" + str(response.request.url))
             jd_coupon['jump_url'] = coupon_item.xpath(
                 './div[contains(@class, "q-ops-jump")]/div[contains(@class, "q-opbtns")]/a/@href').get()
             jd_coupon['batch_id'] = jd_coupon['jump_url'].split("=")[-1]
