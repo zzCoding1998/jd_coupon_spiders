@@ -19,8 +19,7 @@ class JdcouponspiderSpider(scrapy.Spider):
             cat_name = cat.xpath('./text()').get()
             yield jdCouponGoodsCategory(cat_id=cat_id, cat_name=cat_name)
             url = "https://a.jd.com/?cateId=" + str(cat_id)
-            raise Exception
-            # yield scrapy.Request(url, callback=self.parse_coupons, meta={'cat_id': cat_id})
+            yield scrapy.Request(url, callback=self.parse_coupons, meta={'cat_id': cat_id})
 
     def parse_coupons(self, response):
         coupon_items = response.xpath('//div[contains(@class, "quan-item")]')
