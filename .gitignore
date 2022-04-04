@@ -1,3 +1,4 @@
-./.idea
-./jd_coupon_spiders/settings.py
-./utils/chromedriver.exe
+/.idea
+/jd_coupon_spiders/settings.py
+/utils/chromedriver.exe
+/log/*
