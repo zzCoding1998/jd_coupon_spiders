@@ -77,7 +77,6 @@ class JdCouponSpidersPipeline:
                     "{item['quota']}","{item['limit_amount']}","{item['limit_str']}","{item['need_pay_amount']}",
                     "{item['discount_rate']}","{item['discount_unit']}","{item['cat_id']}");
                 '''
-                spider.logger.info(item)
                 spider.logger.info(sql)
                 cursor.execute(sql)
                 self.db.commit()
