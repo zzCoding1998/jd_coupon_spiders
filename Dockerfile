@@ -25,6 +25,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN chmod -R 777 ./sh
+
 EXPOSE 8010:8010
 
 CMD ["top", "-b"]
