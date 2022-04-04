@@ -17,6 +17,9 @@ class JdcouponspiderSpider(scrapy.Spider):
         for cat in cat_items:
             cat_id = cat.xpath('./@data-cateid').get()
             cat_name = cat.xpath('./text()').get()
+            if cat_name == '为你推荐':
+                continue
+
             yield jdCouponGoodsCategory(cat_id=cat_id, cat_name=cat_name)
             url = "https://a.jd.com/?cateId=" + str(cat_id)
             yield scrapy.Request(url, callback=self.parse_coupons, meta={'cat_id': cat_id})
