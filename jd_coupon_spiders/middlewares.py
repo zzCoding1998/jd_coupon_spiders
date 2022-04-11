@@ -103,8 +103,8 @@ class JdCouponSpidersCouponHomeDownloaderMiddleware:
         return s
 
     def process_request(self, request, spider):
+        driver = self._get_driver()
         try:
-            driver = self._get_driver()
             driver.get(request.url)
             if 'cateId=' in request.url:
                 # 将滚动条移动到页面的底部
@@ -126,6 +126,7 @@ class JdCouponSpidersCouponHomeDownloaderMiddleware:
             self.queue.put(driver, True, 60)
             return HtmlResponse(request.url, body=body, encoding='utf-8', request=request)
         except:
+            driver.close()
             return HtmlResponse(request.url, body='', encoding='utf-8', request=request, status=500)
 
     def process_response(self, request, response, spider):
@@ -150,8 +151,8 @@ class JdCouponSpidersCouponHomeDownloaderMiddleware:
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
 
-    def close_spider(self,spider):
-        while self.queue.qsize() > 0:
+    def close_spider(self, spider):
+        while not self.queue.empty():
             self.queue.get().close()
         spider.logger.info('JdCouponSpidersCouponHomeDownloaderMiddleware: close drivers done!')
 
